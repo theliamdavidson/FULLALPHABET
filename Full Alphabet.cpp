@@ -3,13 +3,36 @@
 #include <algorithm>
 using std::string;
 std::string text;
+std::string valid = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 string grab_letter() {
 	std::cout << "Enter line to check (single '.' terminates)" << '\n';
 	std::getline(std::cin, text);
 	return text;
 }
+bool validletters(std::string text) {
+	for (unsigned i = 0; i < text.size(); i++) {
+		for (unsigned j = 0; j < valid.size; j++) {
+			if (text[i] == valid[j]) {
+				//char letter = valid[j];
+				return valid[j];
+			}
+		}
+	}
 
+}
+
+char contains(std::string text) {
+	for (unsigned i = 0; i < text.size(); i++){
+		for (unsigned j = 0; j < valid.size; j++) {
+			if (text[i] == valid[j]) {
+				//char letter = valid[j];
+				return valid[j];
+			}
+		}
+	}
+	
+}
 string alphabet(string grab_letter){
 	std::string missing_letter = text;
 	std::string valid = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -19,44 +42,7 @@ string alphabet(string grab_letter){
 	std::string missing = "Missing letters: ";
 
 	
-	while (text != end) {
-		std::string valid2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		for (int i = 0; i < text.size(); i++) {
-			int j = i;
-			while (j < text.size()) {
-				int count = 0;
-				if (valid2[j] == text[i]) {
-					while(j<valid2.size()-1) {
-						char x = valid2[j]+1;
-						char y = valid2[j];
-						valid2[j+1] = y;
-						valid2[j] = x;
-						j++;
-					}
-					valid2.pop_back();
-				}
-				/*
-				else {
-					count++;
-					j++;
-					if (count < 26) {
-						return failure;
-					}
-				}*/
-				
-			}
-			valid2.pop_back();
-			i++;
-		}
-		std::cout << "Original text: " << text << '\n' << missing << valid2 << '\n';
-		std::getline(std::cin, text);
-		
-	}
-	//else if (text == end) {
-	//	return missing_letter;
-	//}
-	return missing_letter;
-
+	
 }
 
 int main(){
