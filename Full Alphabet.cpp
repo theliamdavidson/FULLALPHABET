@@ -18,19 +18,6 @@ string alphabet(string grab_letter){
 	std::string failure = "Invalid line";
 	std::string missing = "Missing letters: ";
 
-	/*for (char ch = 'A'; ch <= 'Z'; ch++) {
-		missing_letter += static_cast<char>(ch);
-		
-	}
-	for (unsigned i = 0; i < valid.size(); i++) {
-		for (unsigned j = 0; j < text.size(); j++) {
-			if (text[j] == valid[i]) {
-				text.erase(valid.begin(), valid[i], valid.end()), text.end());
-				//valid.erase(valid[j]);
-			}
-		}
-	}
-	*/
 	
 	while (text != end) {
 		std::string valid2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -39,16 +26,23 @@ string alphabet(string grab_letter){
 			while (j < text.size()) {
 				int count = 0;
 				if (valid2[j] == text[i]) {
-				
+					while(j<valid2.size()-1) {
+						char x = valid2[j]+1;
+						char y = valid2[j];
+						valid2[j+1] = y;
+						valid2[j] = x;
+						j++;
+					}
+					valid2.pop_back();
 				}
+				/*
 				else {
 					count++;
 					j++;
 					if (count < 26) {
 						return failure;
 					}
-				}
-				//valid2[j] = text[i + 1];
+				}*/
 				
 			}
 			valid2.pop_back();
